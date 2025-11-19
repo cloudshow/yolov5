@@ -1,0 +1,10 @@
+# 路面病害识别
+path: ../dataset/road
+train:
+  - train.txt
+val: val.txt
+test: test.txt
+
+names:
+  0: aaa
+  1: bbb
