@@ -1,10 +1,17 @@
 # 路面病害识别
-path: ../dataset/road
-train:
-  - train.txt
-val: val.txt
-test: test.txt
+# 文件名：dataset.yaml
+train: /home/cloud/dataset/road/pitch/images/train # 训练图片目录
+val: /home/cloud/dataset/road/pitch/images/val # 验证图片目录
 
-names:
-  0: aaa
-  1: bbb
+# 可选测试集
+# test: /path/to/test/images
+
+nc: 7 # 类别数量（number of classes）
+names: # 类别名称列表（按 class_id 顺序）
+  0: pitch_longitudinal_crack
+  1: pitch_repair
+  2: pitch_pit_slot
+  3: pitch_transverse_crack
+  4: pitch_loose
+  5: pitch_chap
+  6: pitch_massive_crack
