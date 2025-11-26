@@ -280,6 +280,7 @@ def run(
 
 def parse_opt():
     parser = argparse.ArgumentParser()
+    # 权重文件
     parser.add_argument(
         "--weights",
         nargs="+",
@@ -287,18 +288,21 @@ def parse_opt():
         default=ROOT / "yolov5s.pt",
         help="model path or triton URL",
     )
+    # 被检测的图片
     parser.add_argument(
         "--source",
         type=str,
         default=ROOT / "data/images",
         help="file/dir/URL/glob/screen/0(webcam)",
     )
+    # 数据集配置文件 和训练时一致(读类型名称等)
     parser.add_argument(
         "--data",
         type=str,
         default=ROOT / "data/coco128.yaml",
         help="(optional) dataset.yaml path",
     )
+    # 推理图片大小
     parser.add_argument(
         "--imgsz",
         "--img",
@@ -308,23 +312,31 @@ def parse_opt():
         default=[640],
         help="inference size h,w",
     )
+    # 置信度阈值
     parser.add_argument(
         "--conf-thres", type=float, default=0.25, help="confidence threshold"
     )
+    # NMS IoU阈值
     parser.add_argument(
         "--iou-thres", type=float, default=0.45, help="NMS IoU threshold"
     )
+    # 最大检测数量
     parser.add_argument(
         "--max-det", type=int, default=1000, help="maximum detections per image"
     )
+    # 设备
     parser.add_argument(
         "--device", default="", help="cuda device, i.e. 0 or 0,1,2,3 or cpu"
     )
+    # 是否显示结果(是否显示推理结果的图像窗口) 针对视频检测场景
     parser.add_argument("--view-img", action="store_true", help="show results")
+    # 是否保存检测结果为txt文件
     parser.add_argument("--save-txt", action="store_true", help="save results to *.txt")
+    # 是否保存置信度
     parser.add_argument(
         "--save-conf", action="store_true", help="save confidences in --save-txt labels"
     )
+    # 是否保存裁剪的预测框
     parser.add_argument(
         "--save-crop", action="store_true", help="save cropped prediction boxes"
     )
@@ -361,6 +373,7 @@ def parse_opt():
     parser.add_argument(
         "--hide-conf", default=False, action="store_true", help="hide confidences"
     )
+    # 是否使用半精度推理
     parser.add_argument(
         "--half", action="store_true", help="use FP16 half-precision inference"
     )
